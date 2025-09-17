@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: lms-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: lms_db
+      MYSQL_USER: lmsuser
+      MYSQL_PASSWORD: lmspassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - lms-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # Spring Boot Application
+  lms-backend:
+    build:
+      context: ./lms-backend
+      dockerfile: Dockerfile
+    container_name: lms-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: production
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: lms_db
+      DB_USERNAME: lmsuser
+      DB_PASSWORD: lmspassword
+      JWT_SECRET: myProductionSecretKey123456789012345678901234567890123456789012345678901234567890
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./uploads:/app/uploads
+    networks:
+      - lms-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # phpMyAdmin (Optional - for database management)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: lms-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: lmsuser
+      PMA_PASSWORD: lmspassword
+    ports:
+      - "8081:80"
+    networks:
+      - lms-network
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  lms-network:
+    driver: bridge

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Navigation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .step { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        .warning { background-color: #fff3cd; border-color: #ffeaa7; }
+        code { background-color: #f8f9fa; padding: 2px 4px; border-radius: 3px; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>🎓 LMS Frontend Navigation Test Guide</h1>
+
+    <div class="step success">
+        <h2>✅ Step 1: Access the Application</h2>
+        <p>Open your browser and navigate to: <a href="http://localhost:3002" target="_blank"><strong>http://localhost:3002</strong></a></p>
+        <p>You should see the LMS login page with demo account credentials displayed.</p>
+    </div>
+
+    <div class="step info">
+        <h2>📋 Step 2: Login as Student</h2>
+        <p>Use the following credentials to test the student experience:</p>
+        <ul>
+            <li><strong>Username:</strong> <code>student1</code></li>
+            <li><strong>Password:</strong> <code>admin123</code></li>
+        </ul>
+        <p>After login, you'll be redirected to the dashboard.</p>
+    </div>
+
+    <div class="step success">
+        <h2>🔍 Step 3: Browse Courses</h2>
+        <p>From the left sidebar, click on <strong>"Browse Courses"</strong> or navigate to:</p>
+        <p><a href="http://localhost:3002/courses" target="_blank"><code>http://localhost:3002/courses</code></a></p>
+        <p><strong>Expected Result:</strong></p>
+        <ul>
+            <li>You should see a course listing page with search and filter options</li>
+            <li>Two courses should be visible: "Java Full Stack" and "Python Full Stack"</li>
+            <li>Each course shows title, description, instructor, lessons, and an "Enroll" button</li>
+            <li>Search functionality should work in real-time</li>
+        </ul>
+    </div>
+
+    <div class="step info">
+        <h2>🎯 Step 4: Enroll in a Course</h2>
+        <p>On the Browse Courses page:</p>
+        <ol>
+            <li>Click the <strong>"Enroll"</strong> button on any course</li>
+            <li>You should see a success toast notification</li>
+            <li>The button should change to "Enrolled" and become disabled</li>
+            <li>Click <strong>"View Details"</strong> to see the full course page</li>
+        </ol>
+    </div>
+
+    <div class="step success">
+        <h2>📚 Step 5: View My Enrollments</h2>
+        <p>From the left sidebar, click on <strong>"My Enrollments"</strong> or navigate to:</p>
+        <p><a href="http://localhost:3002/my-enrollments" target="_blank"><code>http://localhost:3002/my-enrollments</code></a></p>
+        <p><strong>Expected Result:</strong></p>
+        <ul>
+            <li>You should see all courses you've enrolled in</li>
+            <li>Each enrollment shows progress percentage and completion status</li>
+            <li>Progress bars indicate learning progress</li>
+            <li>"Continue Learning" buttons link back to course details</li>
+        </ul>
+    </div>
+
+    <div class="step info">
+        <h2>🔍 Step 6: Course Details & Progress</h2>
+        <p>Click on any course (either from Browse or My Enrollments):</p>
+        <ol>
+            <li>You should see the detailed course view with lessons</li>
+            <li>For enrolled courses, you can mark lessons as complete</li>
+            <li>Progress percentage updates as you complete lessons</li>
+            <li>Access to discussions, reviews, and certificate (when 100% complete)</li>
+        </ol>
+    </div>
+
+    <div class="step warning">
+        <h2>🔧 Troubleshooting</h2>
+        <p>If you encounter any issues:</p>
+        <ul>
+            <li><strong>Pages not loading:</strong> Check that both frontend (port 3002) and backend (port 8080) are running</li>
+            <li><strong>Login fails:</strong> Verify backend is connected to MySQL and user data exists</li>
+            <li><strong>Courses not showing:</strong> Ensure courses are published (status = PUBLISHED)</li>
+            <li><strong>Navigation broken:</strong> Clear browser cache and refresh</li>
+        </ul>
+    </div>
+
+    <div class="step success">
+        <h2>🎉 Success Criteria</h2>
+        <p>The implementation is working correctly if you can:</p>
+        <ul>
+            <li>✅ Login successfully with student credentials</li>
+            <li>✅ Navigate to Browse Courses and see course listings</li>
+            <li>✅ Use search and filter functionality</li>
+            <li>✅ Enroll in courses with one click</li>
+            <li>✅ Access My Enrollments and see enrolled courses</li>
+            <li>✅ Navigate between pages using the sidebar</li>
+            <li>✅ View detailed course information and track progress</li>
+        </ul>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 5px;">
+        <h3>🚀 Ready to Test!</h3>
+        <p>Click the links above to test each functionality step by step.</p>
+        <p><strong>Main Application:</strong> <a href="http://localhost:3002" target="_blank">http://localhost:3002</a></p>
+    </div>
+</body>
+</html>

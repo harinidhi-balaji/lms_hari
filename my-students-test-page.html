@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Students Test Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .step { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        .warning { background-color: #fff3cd; border-color: #ffeaa7; }
+        code { background-color: #f8f9fa; padding: 2px 4px; border-radius: 3px; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>🎓 My Students Feature Test Guide</h1>
+
+    <div class="step success">
+        <h2>✅ Step 1: Access the Feature</h2>
+        <p><strong>Login as Instructor:</strong></p>
+        <ul>
+            <li>Go to: <a href="http://localhost:3002/login" target="_blank"><strong>http://localhost:3002/login</strong></a></li>
+            <li><strong>Username:</strong> <code>instructor1</code></li>
+            <li><strong>Password:</strong> <code>admin123</code></li>
+        </ul>
+    </div>
+
+    <div class="step info">
+        <h2>📊 Step 2: Navigate to My Students</h2>
+        <p>After login, you should see the instructor dashboard:</p>
+        <ul>
+            <li>Click <strong>"My Students"</strong> in the left sidebar</li>
+            <li>Or go directly to: <a href="http://localhost:3002/instructor/students" target="_blank"><code>http://localhost:3002/instructor/students</code></a></li>
+        </ul>
+    </div>
+
+    <div class="step success">
+        <h2>🔍 Step 3: What You Should See</h2>
+        <p><strong>Expected Features:</strong></p>
+        <ul>
+            <li>📊 <strong>Statistics Dashboard</strong> showing counts of students, enrollments, courses</li>
+            <li>🔍 <strong>Search Box</strong> to search students by name or email</li>
+            <li>📚 <strong>Course Filter</strong> dropdown to filter by specific courses</li>
+            <li>👥 <strong>Student Cards</strong> showing:</li>
+            <ul>
+                <li>Student name and username</li>
+                <li>Email address</li>
+                <li>List of enrolled courses</li>
+                <li>Progress bars for each course</li>
+                <li>Completion percentages</li>
+            </ul>
+        </ul>
+    </div>
+
+    <div class="step info">
+        <h2>🧪 Step 4: Test the Features</h2>
+        <p><strong>Things to Test:</strong></p>
+        <ol>
+            <li><strong>View Students:</strong> You should see "Demo Student" enrolled in multiple courses</li>
+            <li><strong>Search Function:</strong> Type "Demo" in the search box</li>
+            <li><strong>Course Filter:</strong> Select a specific course from the dropdown</li>
+            <li><strong>Progress Tracking:</strong> Check the progress bars showing completion percentages</li>
+            <li><strong>Responsive Design:</strong> Try different screen sizes</li>
+        </ol>
+    </div>
+
+    <div class="step warning">
+        <h2>🔧 Troubleshooting</h2>
+        <p><strong>If you see an empty page or loading spinner:</strong></p>
+        <ul>
+            <li><strong>Check browser console</strong> (F12) for any JavaScript errors</li>
+            <li><strong>Verify backend is running</strong> on port 8080</li>
+            <li><strong>Check API response</strong> in Network tab</li>
+            <li><strong>Ensure student enrollment data exists</strong> in database</li>
+        </ul>
+
+        <p><strong>Debug API manually:</strong></p>
+        <code>
+        curl -H "Authorization: Bearer [TOKEN]"
+        http://localhost:8080/api/enrollments/instructor/my-students
+        </code>
+    </div>
+
+    <div class="step success">
+        <h2>✅ Success Criteria</h2>
+        <p>The feature is working correctly if you can:</p>
+        <ul>
+            <li>✅ See the statistics dashboard with real numbers</li>
+            <li>✅ View student cards with names and enrollments</li>
+            <li>✅ See course names for each enrollment</li>
+            <li>✅ See progress percentages and completion status</li>
+            <li>✅ Use search to find specific students</li>
+            <li>✅ Filter students by course</li>
+            <li>✅ Navigate smoothly without errors</li>
+        </ul>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 5px;">
+        <h3>🚀 Ready to Test!</h3>
+        <p>Open the browser console (F12) to see debug information while testing.</p>
+        <p><strong>My Students Page:</strong> <a href="http://localhost:3002/instructor/students" target="_blank">http://localhost:3002/instructor/students</a></p>
+    </div>
+</body>
+</html>
